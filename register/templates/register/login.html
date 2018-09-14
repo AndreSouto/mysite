@@ -6,28 +6,12 @@
 </head>
 <body>
 
-<fieldset>
-    <legend>Login details:</legend>
-
-    <div class="username">
-        <label for="uname">Username:</label>
-        <input type="text" id="uname" name="uname" required
-               minlength="4" maxlength="8"
-               placeholder="4 to 8 characters long" />
-        <span class="validity"></span>
-    </div>
-    <div class="password">
-        <label for="pass">Password:</label>
-        <input type="text" id="pass" name="pass" required
-               minlength="4" maxlength="8"
-               placeholder="4 to 8 characters long" />
-        <span class="validity"></span>
-    </div>
-
-
-    <a href="{% url 'login' question.id %}">Submit</a>
-
-</fieldset>
+<form action="/your-name/" method="post">
+    <label for="your_name">Log In: </label>
+    <input id="your_name" type="text" name="your_name" value="">
+    <input id="pass" type="password" name="password" value="">
+    <input type="submit" value="OK">
+</form>
 
 </body>
 </html>

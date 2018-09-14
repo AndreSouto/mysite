@@ -7,3 +7,8 @@ class LogInView(generic.DetailView):
     template_name = 'register/login.html'
     context_object_name = 'uname'
 
+    # def log_in (request):
+    #     if request.method == 'POST':
+
+
+
