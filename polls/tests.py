@@ -100,9 +100,9 @@ class QuestionTests(TestCase):
         self.assertEqual(q.pub_date, now)
 
 class ChoiceTests(TestCase):
-    q = Question(question_text="teste3", pub_date=timezone.now())
 
     def test_choice_question(self):
+        q = Question(question_text="teste3", pub_date=timezone.now())
         c = Choice(question=q, choice_text="choice1", votes=10)
         self.assertEqual(c.question, q)
 
