@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-from .models import Question
+from .models import Question, Choice
 
 
 def create_question(question_text, days):
@@ -88,3 +88,28 @@ class QuestionIndexDetailTests(TestCase):
         url = reverse('detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response,past_question.question_text)
+
+class QuestionTests(TestCase):
+    def test_question_question_text(self):
+        q = Question(question_text="teste1", pub_date=timezone.now())
+        self.assertEqual(q.question_text, "teste1")
+
+    def test_question_pub_date(self):
+        now = timezone.now()
+        q = Question(question_text="teste2", pub_date=now)
+        self.assertEqual(q.pub_date, now)
+
+class ChoiceTests(TestCase):
+    q = Question(question_text="teste3", pub_date=timezone.now())
+
+    def test_choice_question(self):
+        c = Choice(question=q, choice_text="choice1", votes=10)
+        self.assertEqual(c.question, q)
+
+    def test_choice_choice_text(self):
+        c = Choice(question=q, choice_text="choice2", votes=10)
+        self.assertEqual(c.choice_text, "choice2")
+
+    def test_choice_votes(self):
+        c = Choice(question=q, choice_text="choice3", votes=10)
+        self.assertEqual(c.votes, 10)
